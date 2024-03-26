@@ -1,32 +1,27 @@
 const divideAndShort = (number) => {
-    return new Promise((resolve, reject) => {
-        if (typeof number === 'number') {
-            const angkaSplit0 = number.toString().split('0')
-            console.log(angkaSplit0)
-            const subSplit = angkaSplit0.map((x) => x.split(""))
-            console.log(subSplit)
-            const angkaShort =  subSplit.map((x) => x.sort())
-            console.log(angkaShort)
-            const subGabung =  angkaShort.map((x) => x.join(""))
-            console.log(subGabung);
-            const angkaGabung =  subGabung.join("")
-            console.log(angkaGabung);
-            resolve(angkaGabung);
-        } else {
-            reject(new Error('Input harus berupa string.'));
-        }
-    });
-}
+    if (typeof number !== 'number') {
+        console.log('Input harus berupa number');
+    } else {
+        const angkaSplit0 = number.toString().split('0');
+        console.log(angkaSplit0);
 
-const startAPP = async () => {
-    try {
-        const angka = (3412340736650927);
-        const angkaUrut = await divideAndShort(angka);
-        console.log(`angka awal : ${angka}`);
-        console.log(`angka urut : ${angkaUrut}`);
-    } catch (error) {
-        console.error(error.message);
+        const subSplit = angkaSplit0.map((x) => x.split(""));
+        console.log(subSplit);
+
+        const angkaShort = subSplit.map((x) => x.sort());
+        console.log(angkaShort);
+
+        const subGabung = angkaShort.map((x) => x.join(""));
+        console.log(subGabung);
+
+        const angkaGabung = subGabung.join("");
+        console.log(angkaGabung);
+
+        console.log(`angka awal : ${number}`);
+        console.log(`angka urut : ${angkaGabung}`);
     }
+
 }
 
-startAPP();
+divideAndShort(3412340736650927)
+

@@ -1,25 +1,27 @@
-
-
-const reverseWords = (kalimat) => {
-    return new Promise((resolve, reject) => {
-        if (typeof kalimat === 'string') {
-            const reversed = kalimat.split(' ').reverse().join(' ');
-            resolve(reversed);
+const cekPalindrom = (kata) => {
+    if (typeof kata === 'string') {
+        const reversed = kata.split('').reverse().join('');
+        if (kata.toLowerCase() === reversed.toLowerCase()) {
+            console.log(`${kata} adalah palindrom.`);
         } else {
-            reject(new Error('Input harus berupa string.'));
+            console.log(`${kata} bukan palindrom.`);
         }
-    });
-}
-
-const startAPP = async () => {
-    try {
-        const kalAwal = ("Selamat Berbuka Puasa");
-        const kalTerbalik = await reverseWords(kalAwal);
-        console.log(`Kalimat awal : ${kalAwal}`);
-        console.log(`Kalimat terbalik : ${kalTerbalik}`);
-    } catch (error) {
-        console.error(error.message);
+    } else {
+        console.log('Input harus berupa string.');
     }
 }
 
-startAPP();
+
+cekPalindrom('malam');
+
+const reverseWords = (kalimat) => {
+    if (typeof kalimat === 'string') {
+        const reversed = kalimat.split(' ').reverse().join(' ');
+        console.log(`Kalimat awal : ${kalimat}`);
+        console.log(`Kalimat terbalik : ${reversed}`);
+    } else {
+        console.log('Input harus berupa string.');
+    }
+}
+
+reverseWords('saya adalah kamu');
